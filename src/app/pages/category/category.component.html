@@ -1,0 +1,6 @@
+<h1 class="titulo">Categorías</h1>
+<ul>
+    @for (category of categories; track $index) {
+        <li class="elemento">ID: {{category.idCategory}} - NOMBRE: {{ category.name}}</li>
+    }
+</ul>

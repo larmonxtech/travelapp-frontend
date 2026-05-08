@@ -1,0 +1,10 @@
+.titulo{
+    font-family: 'Courier New', Courier, monospace;
+    color: green;
+}
+
+.elemento{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: blue;
+    font-style: italic;
+}
