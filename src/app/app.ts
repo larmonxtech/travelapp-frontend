@@ -1,11 +1,12 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { CategoryComponent } from './pages/category/category.component';
+import { TagComponent } from './pages/tag/tag.component';
 
 @Component({
   selector: 'app-root',
   imports: [
-    CategoryComponent
+    CategoryComponent,
+    TagComponent
   ],
   templateUrl: './app.html',
   styleUrl: './app.css'
