@@ -13,6 +13,7 @@ export class TagComponent {
   private readonly tagService = inject(TagService);
 
   ngOnInit() : void{
+    // this.tagService.findAll().subscribe(data => console.log(data));
     this.tagService.findAll().subscribe(data => this.tags = data);
   }
 }

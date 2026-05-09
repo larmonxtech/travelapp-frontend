@@ -1,7 +1,7 @@
 <div class="contenedor-seccion">
     <h1 class="titulo categoria-header">Categorías</h1>
     <ul class="lista-items">
-        @for (category of categories; track category.idCategory) {
+        @for (category of categories; track $index) {
             <li class="elemento-categoria">
                 <div class="icono-categoria">{{ category.name.charAt(0).toUpperCase() }}</div>
                 <div class="info">

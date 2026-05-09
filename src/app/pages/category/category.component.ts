@@ -13,7 +13,7 @@ export class CategoryComponent {
   private readonly categoryService = inject(CategoryService);
 
   ngOnInit() : void{
-    //this.categoryService.findAll().subscribe(data => console.log(data));
-    this.categoryService.findAll().subscribe(data => this.categories = data);
+    this.categoryService.findAll().subscribe(data => console.log(data));
+    // this.categoryService.findAll().subscribe(data => this.categories = data);
   }
 }

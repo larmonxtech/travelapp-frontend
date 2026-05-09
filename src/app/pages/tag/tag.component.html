@@ -1,7 +1,7 @@
 <div class="contenedor-etiquetas">
     <h1 class="titulo">Etiquetas</h1>
     <ul class="lista-etiquetas">
-        @for (tag of tags; track tag.idTag) {
+        @for (tag of tags; track $index) {
             <li class="elemento">
                 <span class="id">#{{tag.idTag}}</span>
                 <span class="nombre">{{ tag.name }}</span>
