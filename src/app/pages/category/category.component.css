@@ -1,67 +1,8 @@
-.contenedor-seccion {
-    max-width: 600px;
-    margin: 20px auto;
-    font-family: 'Segoe UI', system-ui, sans-serif;
+table {
+  width: 100%;
 }
 
-.categoria-header {
-    color: #2d3436;
-    border-bottom: 3px solid var(--primary-category);
-    display: inline-block;
-    margin-bottom: 1.5rem;
-    font-size: 1.8rem;
-}
-
-.lista-items {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    gap: 12px; /* Espacio entre tarjetas */
-}
-
-.elemento-categoria {
-    background: white;
-    display: flex;
-    align-items: center;
-    padding: 12px 20px;
-    border-radius: 12px;
-    border-left: 5px solid var(--primary-category);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.elemento-categoria:hover {
-    transform: translateX(5px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-}
-
-.icono-categoria {
-    background: var(--primary-category);
-    color: white;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    font-weight: bold;
-    margin-right: 15px;
-}
-
-.info {
-    display: flex;
-    flex-direction: column;
-}
-
-.info .nombre {
-    font-weight: 600;
-    color: #2d3436;
-    font-size: 1.1rem;
-    text-transform: capitalize;
-}
-
-.info .id {
-    font-size: 0.8rem;
-    color: #b2bec3;
-    margin-top: 2px;
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
 }

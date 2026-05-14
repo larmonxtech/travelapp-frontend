@@ -1,0 +1,35 @@
+<form [formGroup]="$form()" (submit)="operate()" class="example-container" #frmPatient="ngForm">
+
+    <div [hidden]="true">
+        <mat-form-field>
+            <mat-label>ID</mat-label>
+            <input matInput placeholder="ID" formControlName="idCategory">
+        </mat-form-field>
+    </div>
+
+    <mat-form-field>
+        <mat-label>NAME</mat-label>
+        <input matInput placeholder="Name" formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>DESCRIPTION</mat-label>
+        <input matInput placeholder="Description" formControlName="description">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>STATUS</mat-label>
+        <input matInput placeholder="Status" formControlName="status">
+    </mat-form-field>
+
+    <button mat-flat-button type="submit">
+        <span>OK</span>
+        <mat-icon>done</mat-icon>
+    </button>
+
+    <button mat-flat-button type="button" class="cancel-button" routerLink="/pages/category">
+        <span>Cancel</span>
+        <mat-icon>cancel</mat-icon>
+    </button>
+
+</form>
