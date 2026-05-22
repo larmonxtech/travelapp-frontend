@@ -2,16 +2,17 @@ import { inject, Injectable, signal } from '@angular/core';
 import { environment } from '../../environments/environment.development';
 import { HttpClient } from '@angular/common/http';
 import { Category } from '../model/category';
+import { GenericSignalService } from './generic-signal.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CategoryService {
+export class CategoryService extends GenericSignalService<Category> {
   //private url = 'http://localhost:9090/categories';
-  private url:string = `${environment.HOST}/categories`;
+  protected url:string = `${environment.HOST}/categories`;
 
   //constructor(private http: HttpClient){}
-  private readonly http = inject(HttpClient);
+  /*private readonly http = inject(HttpClient);
 
   private readonly _categories = signal<Category[]>([]);
   private readonly _message = signal<string>('');
@@ -49,4 +50,5 @@ export class CategoryService {
   setMessageChange(msg: string){
     this._message.set(msg);
   }
+    */
 }

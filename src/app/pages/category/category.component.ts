@@ -44,15 +44,15 @@ export class CategoryComponent {
   //@ViewChild(MatSort) sort: MatSort;
 
   //Enlaza con el signal del service para que cada vez que haya un cambio en los pacientes, se actualice la tabla
-  //protected $categories = this.patientService.$patientsChange;
-  protected $categories = this.categoryService.$categoriesChange;
+  // protected $categories = this.categoryService.$categoriesChange;
+  protected $categories = this.categoryService.$listChange;
 
   protected displayedColumns: string[] = ['idCategory', 'name', 'description', 'status', 'actions'];
 
   //Esta esuchando los signals de categoria, paginador y sort para actualizar la tabla cada vez que haya un cambio
   constructor() {
-    this.categoryService.findAll().subscribe(data => this.categoryService.setCategoryChange(data));
-    // this.categoryService.findAll().subscribe(data => this.categoryService.setListChange(data));
+    // this.categoryService.findAll().subscribe(data => this.categoryService.setCategoryChange(data));
+    this.categoryService.findAll().subscribe(data => this.categoryService.setListChange(data));
 
     effect( () => {
       const data = this.$categories();
@@ -81,13 +81,14 @@ export class CategoryComponent {
     this.$dataSource().filter = filterValue.trim().toLowerCase();
   }
 
-  delete(idPatient: number){
+  delete(idCategory: number){
     const ok = window.confirm('Are you sure to delete?');
     if(ok){
-      this.categoryService.delete(idPatient)
+      this.categoryService.delete(idCategory)
       .pipe(
         switchMap( () => this.categoryService.findAll() ),
-        tap( data => this.categoryService.setCategoryChange(data) ),
+        // tap( data => this.categoryService.setCategoryChange(data) ),
+        tap( data => this.categoryService.setListChange(data) ),
         tap( () => this.categoryService.setMessageChange('DELETED') )
       )
       .subscribe();
