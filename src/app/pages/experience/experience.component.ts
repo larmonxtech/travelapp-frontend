@@ -13,6 +13,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { CurrencyPipe } from '@angular/common';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { CategoryService } from '../../services/category.service';
 
 @Component({
   selector: 'app-experience',
@@ -33,6 +35,7 @@ import { CurrencyPipe } from '@angular/common';
 })
 export class ExperienceComponent {
   private readonly experienceService = inject(ExperienceService);
+  private readonly categoryService = inject(CategoryService);
   private readonly snackBar = inject(MatSnackBar);
   private readonly dialog = inject(MatDialog);
 
@@ -41,8 +44,9 @@ export class ExperienceComponent {
   protected $sort = viewChild(MatSort);
 
   protected $experiences = this.experienceService.$listChange;
+  protected $categories = toSignal(this.categoryService.findAll(), { initialValue: [] });
 
-  protected displayedColumns: string[] = ['idExperience', 'name', 'description', 'precioUnitario', 'estado', 'actions'];
+  protected displayedColumns: string[] = ['idExperience','categoryName', 'name', 'description', 'precioUnitario', 'estado', 'actions'];
 
   constructor() {
     this.experienceService.findAll().subscribe(data => this.experienceService.setListChange(data));
@@ -70,6 +74,11 @@ export class ExperienceComponent {
         untracked( () => this.experienceService.setMessageChange('') );
       }
     });
+  }
+
+  getCategoryName(idCategory: number) {
+    const category = this.$categories().find(c => c.idCategory === idCategory);
+    return category ? category.name : 'N/A';
   }
 
   openDialog(experience?: Experience){

@@ -1,0 +1,22 @@
+table {
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.active-badge {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.inactive-badge {
+  background-color: #f44336; /* Red */
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+}

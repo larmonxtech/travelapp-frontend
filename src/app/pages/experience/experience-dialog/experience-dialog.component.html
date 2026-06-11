@@ -1,63 +1,100 @@
 <mat-dialog-content>
-    <mat-toolbar>
-        <span>Experience Info</span>
-    </mat-toolbar>
+  <mat-toolbar>
+    <span>Experience Info</span>
+  </mat-toolbar>
 
-    <div class="example-container">
-        <mat-form-field>
-            <mat-label>Category</mat-label>
-            <mat-select [(ngModel)]="$experience().idCategory">
-                @for (c of categories; track c.idCategory) {
-                    <mat-option [value]="c.idCategory">{{c.name}}</mat-option>
-                }
-            </mat-select>
-        </mat-form-field>
+  <div class="example-container" [formGroup]="$form()">
+    <input type="hidden" formControlName="idExperience" />
 
-        <mat-form-field>
-            <input matInput placeholder="Name" [(ngModel)]="$experience().name">
-        </mat-form-field>
+    <mat-form-field>
+      <mat-label>Category</mat-label>
+      <mat-select formControlName="idCategory">
+        @for (c of $categories(); track c.idCategory) {
+          <mat-option [value]="c.idCategory">{{ c.name }}</mat-option>
+        }
+      </mat-select>
+      @if ($f()['idCategory'].errors?.['required'] && $f()['idCategory'].touched) {
+        <small class="invalid">Category is required</small>
+      }
+    </mat-form-field>
 
-        <mat-form-field>
-            <textarea matInput placeholder="Description" [(ngModel)]="$experience().description"></textarea>
-        </mat-form-field>
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="Name" formControlName="name" />
+      @if ($f()['name'].errors?.['required'] && $f()['name'].touched) {
+        <small class="invalid">Name is required</small>
+      }
+    </mat-form-field>
 
-        <mat-form-field>
-            <input matInput placeholder="Cover Photo URL" [(ngModel)]="$experience().coverPhotoUrl">
-        </mat-form-field>
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <textarea matInput placeholder="Description" formControlName="description"></textarea>
+      @if ($f()['description'].errors?.['required'] && $f()['description'].touched) {
+        <small class="invalid">Description is required</small>
+      }
+    </mat-form-field>
 
-        <mat-form-field>
-            <input type="number" matInput placeholder="Duration (Hours)" [(ngModel)]="$experience().duracionHoras">
-        </mat-form-field>
+    <mat-form-field>
+      <mat-label>Cover Photo URL</mat-label>
+      <input matInput placeholder="Cover Photo URL" formControlName="coverPhotoUrl" />
+    </mat-form-field>
 
-        <mat-form-field>
-            <input type="number" matInput placeholder="Max Capacity" [(ngModel)]="$experience().maxCapacity">
-        </mat-form-field>
+    <mat-form-field>
+      <mat-label>Duration (Hours)</mat-label>
+      <input
+        type="number"
+        matInput
+        placeholder="Duration (Hours)"
+        formControlName="duracionHoras"
+      />
+      @if ($f()['duracionHoras'].errors?.['required'] && $f()['duracionHoras'].touched) {
+        <small class="invalid">Duration is required</small>
+      }
+    </mat-form-field>
 
-        <mat-form-field>
-            <input type="number" matInput placeholder="Unit Price" [(ngModel)]="$experience().precioUnitario">
-        </mat-form-field>
+    <mat-form-field>
+      <mat-label>Max Capacity</mat-label>
+      <input type="number" matInput placeholder="Max Capacity" formControlName="maxCapacity" />
+      @if ($f()['maxCapacity'].errors?.['required'] && $f()['maxCapacity'].touched) {
+        <small class="invalid">Max Capacity is required</small>
+      }
+    </mat-form-field>
 
-        <mat-form-field>
-            <input matInput placeholder="Experience Type" [(ngModel)]="$experience().experienceType">
-        </mat-form-field>
+    <mat-form-field>
+      <mat-label>Unit Price</mat-label>
+      <input type="number" matInput placeholder="Unit Price" formControlName="precioUnitario" />
+      @if ($f()['precioUnitario'].errors?.['required'] && $f()['precioUnitario'].touched) {
+        <small class="invalid">Unit Price is required</small>
+      }
+    </mat-form-field>
 
-        <mat-form-field>
-            <mat-label>Status</mat-label>
-            <mat-select [(ngModel)]="$experience().estado">
-                <mat-option [value]="true">ACTIVO</mat-option>
-                <mat-option [value]="false">INACTIVO</mat-option>
-            </mat-select>
-        </mat-form-field>
-        
-        <button mat-flat-button (click)="operate()">
-            <span>OK</span>
-            <mat-icon>done</mat-icon>
-        </button>
+    <mat-form-field>
+      <mat-label>Experience Type</mat-label>
+      <input matInput placeholder="Experience Type" formControlName="experienceType" />
+      @if ($f()['experienceType'].errors?.['required'] && $f()['experienceType'].touched) {
+        <small class="invalid">Experience Type is required</small>
+      }
+    </mat-form-field>
 
-        <button mat-flat-button class="cancel-button" (click)="close()">
-            <span>Cancel</span>
-            <mat-icon>cancel</mat-icon>
-        </button>
-    </div>
+    <mat-form-field>
+      <mat-label>Status</mat-label>
+      <mat-select formControlName="estado">
+        <mat-option [value]="true">ACTIVO</mat-option>
+        <mat-option [value]="false">INACTIVO</mat-option>
+      </mat-select>
+      @if ($f()['estado'].errors?.['required'] && $f()['estado'].touched) {
+        <small class="invalid">Status is required</small>
+      }
+    </mat-form-field>
 
+    <button mat-flat-button (click)="operate()">
+      <span>OK</span>
+      <mat-icon>done</mat-icon>
+    </button>
+
+    <button mat-flat-button class="cancel-button" (click)="close()">
+      <span>Cancel</span>
+      <mat-icon>cancel</mat-icon>
+    </button>
+  </div>
 </mat-dialog-content>

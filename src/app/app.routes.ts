@@ -1,17 +1,13 @@
 import { Routes } from '@angular/router';
-import { CategoryComponent } from './pages/category/category.component';
-import { CategoryEditComponent } from './pages/category/category-edit/category-edit.component';
-import { TagComponent } from './pages/tag/tag.component';
-import { ExperienceComponent } from './pages/experience/experience.component';
+import { LoginComponent } from './login/login.component';
+import { LayoutComponent } from './pages/layout/layout.component';
 
 export const routes: Routes = [
-    { 
-        path: 'pages/category', component: CategoryComponent,
-        children: [
-            { path: 'new', component: CategoryEditComponent },
-            { path: 'edit/:id', component: CategoryEditComponent },
-        ],
-    },
-    { path: 'pages/tag', component: TagComponent },
-    { path: 'pages/experience', component: ExperienceComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  {
+    path: 'pages',
+    component: LayoutComponent,
+    loadChildren: () => import('./pages/pages.routes').then((m) => m.pagesRoutes),
+  },
 ];
