@@ -1,0 +1,63 @@
+<mat-dialog-content>
+    <mat-toolbar>
+        <span>Experience Info</span>
+    </mat-toolbar>
+
+    <div class="example-container">
+        <mat-form-field>
+            <mat-label>Category</mat-label>
+            <mat-select [(ngModel)]="$experience().idCategory">
+                @for (c of categories; track c.idCategory) {
+                    <mat-option [value]="c.idCategory">{{c.name}}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Name" [(ngModel)]="$experience().name">
+        </mat-form-field>
+
+        <mat-form-field>
+            <textarea matInput placeholder="Description" [(ngModel)]="$experience().description"></textarea>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Cover Photo URL" [(ngModel)]="$experience().coverPhotoUrl">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input type="number" matInput placeholder="Duration (Hours)" [(ngModel)]="$experience().duracionHoras">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input type="number" matInput placeholder="Max Capacity" [(ngModel)]="$experience().maxCapacity">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input type="number" matInput placeholder="Unit Price" [(ngModel)]="$experience().precioUnitario">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Experience Type" [(ngModel)]="$experience().experienceType">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Status</mat-label>
+            <mat-select [(ngModel)]="$experience().estado">
+                <mat-option [value]="true">ACTIVO</mat-option>
+                <mat-option [value]="false">INACTIVO</mat-option>
+            </mat-select>
+        </mat-form-field>
+        
+        <button mat-flat-button (click)="operate()">
+            <span>OK</span>
+            <mat-icon>done</mat-icon>
+        </button>
+
+        <button mat-flat-button class="cancel-button" (click)="close()">
+            <span>Cancel</span>
+            <mat-icon>cancel</mat-icon>
+        </button>
+    </div>
+
+</mat-dialog-content>
