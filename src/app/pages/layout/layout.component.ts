@@ -7,6 +7,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { LoginService } from '../../services/login.service';
+import { MenuService } from '../../services/menu.service';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-layout',
@@ -27,6 +29,9 @@ import { LoginService } from '../../services/login.service';
 export class LayoutComponent {
   private readonly loginService = inject(LoginService);
   private readonly router = inject(Router);
+  private readonly menuService = inject(MenuService);
+
+  protected $menus = toSignal(this.menuService.getMenusByUser(), { initialValue: [] });
 
   logout(){
     this.loginService.logout().subscribe();

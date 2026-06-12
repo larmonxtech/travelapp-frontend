@@ -52,7 +52,8 @@ export class LoginComponent {
         sessionStorage.setItem(environment.TOKEN_NAME, data.access_token);
         //localStorage.setItem(environment.TOKEN_NAME, data.access_token);
 
-        this.router.navigate(['/pages/category']);
+        // this.router.navigate(['/pages/category']);
+        this.router.navigate(['/pages/dashboard']);
       });
 
 
