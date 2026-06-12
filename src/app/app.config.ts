@@ -4,6 +4,8 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { JwtInterceptor } from './interceptor/jwt.interceptor';
+import { CredentialsInterceptor } from './interceptor/credentials.interceptor';
+import { ServerErrorInterceptor } from './interceptor/server-error.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -11,6 +13,8 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     // provideHttpClient(),
     provideHttpClient(withInterceptorsFromDi()),
-    {provide: HTTP_INTERCEPTORS, useClass:JwtInterceptor,multi:true}
+    {provide: HTTP_INTERCEPTORS, useClass:JwtInterceptor,multi:true},
+    // { provide: HTTP_INTERCEPTORS, useClass: CredentialsInterceptor, multi: true},
+    { provide: HTTP_INTERCEPTORS, useClass: ServerErrorInterceptor, multi: true },
   ]
 };

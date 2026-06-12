@@ -1,26 +1,29 @@
 <mat-dialog-content>
-    <mat-toolbar>
-        <span>Tag Info</span>
-    </mat-toolbar>
+  <mat-toolbar>
+    <span>Tag Info</span>
+  </mat-toolbar>
 
-    <div class="example-container">
-        <mat-form-field>
-            <input matInput placeholder="Name" [(ngModel)]="$tag().name">
-        </mat-form-field>
+  <div class="example-container">
+    <mat-form-field>
+      <input matInput placeholder="Name" [(ngModel)]="$tag().name" />
+    </mat-form-field>
 
-        <mat-form-field>
-            <input matInput placeholder="Status" [(ngModel)]="$tag().status">
-        </mat-form-field>
-        
-        <button mat-flat-button (click)="operate()">
-            <span>OK</span>
-            <mat-icon>done</mat-icon>
-        </button>
+    <mat-form-field>
+      <!-- <input matInput placeholder="Status" [(ngModel)]="$tag().status"> -->
+      <mat-select [(ngModel)]="$tag().status">
+        <mat-option [value]="true">ACTIVE</mat-option>
+        <mat-option [value]="false">INACTIVE</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-        <button mat-flat-button class="cancel-button" (click)="close()">
-            <span>Cancel</span>
-            <mat-icon>cancel</mat-icon>
-        </button>
-    </div>
+    <button mat-flat-button (click)="operate()">
+      <span>OK</span>
+      <mat-icon>done</mat-icon>
+    </button>
 
+    <button mat-flat-button class="cancel-button" (click)="close()">
+      <span>Cancel</span>
+      <mat-icon>cancel</mat-icon>
+    </button>
+  </div>
 </mat-dialog-content>

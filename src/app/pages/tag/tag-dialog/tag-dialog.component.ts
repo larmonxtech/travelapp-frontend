@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { switchMap, tap } from 'rxjs';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-tag-dialog',
@@ -18,7 +19,8 @@ import { switchMap, tap } from 'rxjs';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    MatSelectModule
   ],
   templateUrl: './tag-dialog.component.html',
   styleUrl: './tag-dialog.component.css',

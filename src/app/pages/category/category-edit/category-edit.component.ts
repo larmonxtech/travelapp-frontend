@@ -9,6 +9,7 @@ import { CategoryService } from '../../../services/category.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Category } from '../../../model/category';
 import { switchMap, tap } from 'rxjs';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-category-edit',
@@ -18,7 +19,8 @@ import { switchMap, tap } from 'rxjs';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    RouterLink
+    RouterLink,
+    MatSelectModule,   
   ],
   templateUrl: './category-edit.component.html',
   styleUrl: './category-edit.component.css',
@@ -63,10 +65,10 @@ export class CategoryEditComponent {
 
     const category: Category = form.value as Category;
     /*const patient: Category = new Category();
-    patient.idCategory = form.value.idCategory;
-    patient.name = form.value.name;
-    patient.description = form.value.description;
-    patient.status = form.value.status;*/
+    category.idCategory = form.value.idCategory;
+    category.name = form.value.name;
+    category.description = form.value.description;
+    category.status = form.value.status;*/
 
     const operation$ = isEdit ? this.categoryService.update(id, category) : this.categoryService.save(category);
 

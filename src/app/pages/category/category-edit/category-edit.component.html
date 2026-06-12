@@ -1,3 +1,4 @@
+<h2> Create/Edit Category</h2>
 <form [formGroup]="$form()" (submit)="operate()" class="example-container" #frmPatient="ngForm">
 
     <div [hidden]="true">
@@ -19,7 +20,11 @@
 
     <mat-form-field>
         <mat-label>STATUS</mat-label>
-        <input matInput placeholder="Status" formControlName="status">
+        <!-- <input matInput placeholder="Status" formControlName="status"> -->
+         <mat-select formControlName="status">
+            <mat-option [value]="true">ACTIVE</mat-option>
+            <mat-option [value]="false">INACTIVE</mat-option>
+        </mat-select>
     </mat-form-field>
 
     <button mat-flat-button type="submit">
