@@ -64,7 +64,13 @@
     </tr>
   </table>
 
-  <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]" aria-label="Select page of users"></mat-paginator>
+  <mat-paginator
+  [pageSizeOptions]="[10, 25, 50, 100]" 
+  aria-label="Select page of users"
+  [length]="$totalElements()"
+    [pageSize]="$pageRequest().size"
+    (page)="changePage($event)"
+  ></mat-paginator>
 
   <button mat-fab style="float: right;" routerLink="/pages/category/new">
     <mat-icon>add</mat-icon>

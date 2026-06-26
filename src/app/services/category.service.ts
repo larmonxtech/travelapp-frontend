@@ -11,6 +11,10 @@ export class CategoryService extends GenericSignalService<Category> {
   //private url = 'http://localhost:9090/categories';
   protected url:string = `${environment.HOST}/categories`;
 
+  listPageable(p: number, s: number){
+    return this.http.get<any>(`${this.url}/pageable?page=${p}&size=${s}`);
+  }
+
   //constructor(private http: HttpClient){}
   /*private readonly http = inject(HttpClient);
 
